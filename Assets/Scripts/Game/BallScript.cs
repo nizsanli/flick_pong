@@ -26,9 +26,9 @@ public class BallScript : MonoBehaviour {
 
     public void Reset()
     {
-        GetComponent<Rigidbody2D>().isKinematic = true;
         transform.position = Vector3.zero;
         transform.localScale = Vector3.zero;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
         reset = true;
         currScale = 0f;
@@ -52,8 +52,6 @@ public class BallScript : MonoBehaviour {
             transform.localScale = Vector3.one;
 
             // shoot ball
-            GetComponent<Rigidbody2D>().isKinematic = false;
-
             float randOffset = (float)rand.NextDouble() - 0.5f;
             GetComponent<Rigidbody2D>().velocity = (Vector3.down + Vector3.right*randOffset*2f).normalized * initialSpeed;
 
